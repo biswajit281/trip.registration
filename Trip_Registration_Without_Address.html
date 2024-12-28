@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            text-align: center;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+            text-align: left;
+        }
+        input {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Trip Registration</h1>
+        <form id="tripForm">
+            <label for="studentName">Student Name:</label>
+            <input type="text" id="studentName" name="studentName" placeholder="Enter your name" required>
+
+            <label for="tripDate">Choose Trip Date:</label>
+            <input type="date" id="tripDate" name="tripDate" required>
+
+            <button type="submit">Submit</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById("tripForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form from reloading the page
+
+            const studentName = document.getElementById("studentName").value;
+            const tripDate = document.getElementById("tripDate").value;
+
+            if (studentName && tripDate) {
+                document.getElementById("result").innerText = 
+                    `Thank you, ${studentName}! You have registered for the trip on ${tripDate}.`;
+                console.log("Student Name:", studentName);
+                console.log("Trip Date:", tripDate);
+
+                // Add backend integration here if needed
+            } else {
+                document.getElementById("result").innerText = 
+                    "Please fill out all fields before submitting.";
+            }
+        });
+    </script>
+</body>
+</html>
